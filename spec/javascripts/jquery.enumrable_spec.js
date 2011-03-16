@@ -79,6 +79,10 @@ describe('jquery.enumerable', function() {
     });
   });
 
+  it('include should be equal member', function() {
+    expect($.include).toEqual($.member);
+  });
+
   describe('inject [1, 2, 3]', function() {
     var arr;
 

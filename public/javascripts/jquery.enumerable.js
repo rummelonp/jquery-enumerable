@@ -29,6 +29,8 @@
       });
     };
 
+    var include = member;
+
     var inject = function(enumerable, result, iterator) {
       $.each(enumerable, function(index, value) {
         result = iterator.call(value, result, index, value);
@@ -42,6 +44,7 @@
       collect: collect,
       select: select,
       member: member,
+      include: include,
       inject: inject
     };
   }();
