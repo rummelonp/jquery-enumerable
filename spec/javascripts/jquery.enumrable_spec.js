@@ -41,7 +41,27 @@ describe('jquery.enumerable', function() {
 
   it('collect should be equal $.map', function() {
     expect($.collect).toEqual($.map);
-  })
+  });
+
+  describe('select [1, 2, 3, 4, 5, 6]', function() {
+    var arr;
+
+    beforeEach(function() {
+      arr = [1, 2, 3, 4, 5, 6];
+    });
+
+    it('Array of selected even number values from array should be [2, 4, 6]', function() {
+      expect($.select(arr, function() {
+        return this % 2 == 0;
+      })).toEqual([2, 4, 6]);
+    });
+
+    it('Array of selected values more than 3 from array should be [4, 5, 6]', function() {
+      expect($.select(arr, function() {
+        return this > 3;
+      })).toEqual([4, 5, 6]);
+    });
+  });
 
   describe('inject [1, 2, 3]', function() {
     var arr;

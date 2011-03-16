@@ -15,6 +15,14 @@
 
     var collect = $.map;
 
+    var select = function(enumerable, iterator) {
+      var results = [];
+      $.each(enumerable, function(index, value) {
+        iterator.call(value, index, value) && results.push(value);
+      });
+      return results;
+    };
+
     var inject = function(enumerable, result, iterator) {
       $.each(enumerable, function(index, value) {
         result = iterator.call(value, result, index, value);
@@ -26,6 +34,7 @@
       all: all,
       any: any,
       collect: collect,
+      select: select,
       inject: inject
     };
   }();
