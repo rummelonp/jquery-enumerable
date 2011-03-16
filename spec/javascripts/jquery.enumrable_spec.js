@@ -19,6 +19,26 @@ describe('jquery.enumerable', function() {
     });
   });
 
+  describe('any [-1, 0, 1]', function() {
+    var arr;
+
+    beforeEach(function() {
+      arr = [-1, 0, 1];
+    });
+
+    it('Any values should not be equal 10', function() {
+      expect($.any(arr, function() {
+        return this == 10;
+      })).toBeFalsy();
+    });
+
+    it('Any values should be equal 0', function() {
+      expect($.any(arr, function() {
+        return this == 0;
+      })).toBeTruthy();
+    });
+  });
+
   describe('inject [1, 2, 3]', function() {
     var arr;
 

@@ -7,6 +7,12 @@
       });
     };
 
+    var any = function(enumerable, iterator) {
+      return $.inject(enumerable, false, function(result, index, value) {
+        return result || iterator.call(value, index, value);
+      });
+    };
+
     var inject = function(enumerable, result, iterator) {
       $.each(enumerable, function(index, value) {
         result = iterator.call(value, result, index, value);
@@ -16,6 +22,7 @@
 
     return {
       all: all,
+      any: any,
       inject: inject
     };
   }();
