@@ -12,7 +12,7 @@
 #
 src_files:
     - public/javascripts/jquery.min.js
-    - public/javascripts/**/*.js
+    - jquery.enumerable.js
 
 # stylesheets
 #
