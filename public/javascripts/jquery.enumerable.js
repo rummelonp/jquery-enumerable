@@ -58,6 +58,18 @@
       return result;
     };
 
+    var min = function(enumerable) {
+      var result;
+      $.each(enumerable, function(index, value) {
+        if (result === undefined ||
+           value < result)
+        {
+          result = value;
+        }
+      });
+      return result;
+    };
+
     var inject = function(enumerable, result, iterator) {
       $.each(enumerable, function(index, value) {
         result = iterator.call(value, result, index, value);
@@ -74,6 +86,7 @@
       include: include,
       max: max,
       maxBy: maxBy,
+      min: min,
       inject: inject
     };
   }();

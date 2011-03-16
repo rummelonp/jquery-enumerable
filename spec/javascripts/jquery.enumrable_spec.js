@@ -101,6 +101,16 @@ describe('jquery.enumerable', function() {
     });
   });
 
+  describe('min', function() {
+    it('[1, 2, 3].min should be 1', function() {
+      expect($.min([1, 2, 3])).toEqual(1);
+    });
+
+    it('[-1000, -100, -10, 0].min should be -1000', function() {
+      expect($.min([-1000, -100, -10, 0])).toEqual(-1000);
+    });
+  });
+
   describe('inject [1, 2, 3]', function() {
     var arr;
 
