@@ -14,5 +14,14 @@ describe('jquery.enumerable', function() {
       expect($.inject(arr, [], square)).toEqual([1, 4, 9]);
       expect($(arr).inject([], square)).toEqual([1, 4, 9]);
     });
+
+    it('Array of keys and values of array should be [[0, 1], [1, 2], [2, 3]]', function() {
+      var pair = function(result, index) {
+        result.push([index, this]);
+        return result;
+      };
+      expect($.inject(arr, [], pair)).toEqual([[0, 1], [1, 2], [2, 3]]);
+      expect($(arr).inject([], pair)).toEqual([[0, 1], [1, 2], [2, 3]]);
+    });
   });
 });
