@@ -63,6 +63,22 @@ describe('jquery.enumerable', function() {
     });
   });
 
+  describe('member [1, 2, 3]', function() {
+    var arr;
+
+    beforeEach(function() {
+      arr = [1, 2, 3];
+    });
+
+    it('should have 1', function() {
+      expect($.member(arr, 1)).toBeTruthy();
+    });
+
+    it('should not have 0', function() {
+      expect($.member(arr, 0)).toBeFalsy();
+    });
+  });
+
   describe('inject [1, 2, 3]', function() {
     var arr;
 

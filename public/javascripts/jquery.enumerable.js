@@ -23,6 +23,12 @@
       return results;
     };
 
+    var member = function(enumerable, val) {
+      return $.any(enumerable, function(index, value) {
+        return val == this;
+      });
+    };
+
     var inject = function(enumerable, result, iterator) {
       $.each(enumerable, function(index, value) {
         result = iterator.call(value, result, index, value);
@@ -35,6 +41,7 @@
       any: any,
       collect: collect,
       select: select,
+      member: member,
       inject: inject
     };
   }();
