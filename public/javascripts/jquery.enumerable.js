@@ -1,6 +1,11 @@
 (function($) {
 
   var Enumerable = function() {
+    var all = function(enumerable, iterator) {
+      return $.inject(enumerable, true, function(result, index, value) {
+        return result && iterator.call(value, index, value);
+      });
+    };
 
     var inject = function(enumerable, result, iterator) {
       $.each(enumerable, function(index, value) {
@@ -10,6 +15,7 @@
     };
 
     return {
+      all: all,
       inject: inject
     };
   }();

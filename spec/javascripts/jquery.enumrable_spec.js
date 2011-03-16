@@ -1,4 +1,24 @@
 describe('jquery.enumerable', function() {
+  describe('all [-1, 0, 1]', function() {
+    var arr;
+
+    beforeEach(function() {
+      arr = [-1, 0, 1];
+    });
+
+    it('All values should not be more equal 0', function() {
+      expect($.all(arr, function() {
+        return this >= 0;
+      })).toBeFalsy();
+    });
+
+    it('All values should be more equal -1', function() {
+      expect($.all(arr, function() {
+        return this >= -1;
+      })).toBeTruthy();
+    });
+  });
+
   describe('inject [1, 2, 3]', function() {
     var arr;
 
