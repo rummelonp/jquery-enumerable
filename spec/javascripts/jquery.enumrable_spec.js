@@ -111,6 +111,14 @@ describe('jquery.enumerable', function() {
     });
   });
 
+  describe('minBy', function() {
+    it('[-4, -2, 1, 3].minBy squaring value should be 1', function() {
+      expect($.minBy([-4, -2, 1, 3], function() {
+        return this * this;
+      })).toEqual(1);
+    });
+  });
+
   describe('inject [1, 2, 3]', function() {
     var arr;
 
