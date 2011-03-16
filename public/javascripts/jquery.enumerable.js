@@ -23,6 +23,13 @@
       return results;
     };
 
+    var inject = function(enumerable, result, iterator) {
+      $.each(enumerable, function(index, value) {
+        result = iterator.call(value, result, index, value);
+      });
+      return result;
+    };
+
     var member = function(enumerable, val) {
       return $.any(enumerable, function(index, value) {
         return val == this;
@@ -85,25 +92,18 @@
       return result;
     };
 
-    var inject = function(enumerable, result, iterator) {
-      $.each(enumerable, function(index, value) {
-        result = iterator.call(value, result, index, value);
-      });
-      return result;
-    };
-
     return {
       all: all,
       any: any,
       collect: collect,
       select: select,
+      inject: inject,
       member: member,
       include: include,
       max: max,
       maxBy: maxBy,
       min: min,
-      minBy: minBy,
-      inject: inject
+      minBy: minBy
     };
   }();
 
