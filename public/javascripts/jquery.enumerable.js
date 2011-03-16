@@ -43,6 +43,21 @@
       return result;
     };
 
+    var maxBy = function(enumerable, iterator) {
+      var result;
+      var iterator_result;
+      $.each(enumerable, function(index, value) {
+        var iterator_value = iterator.call(value, index, value);
+        if (iterator_result === undefined ||
+           iterator_value > iterator_result)
+        {
+          iterator_result = iterator_value;
+          result = value;
+        }
+      });
+      return result;
+    };
+
     var inject = function(enumerable, result, iterator) {
       $.each(enumerable, function(index, value) {
         result = iterator.call(value, result, index, value);
@@ -58,6 +73,7 @@
       member: member,
       include: include,
       max: max,
+      maxBy: maxBy,
       inject: inject
     };
   }();

@@ -93,6 +93,14 @@ describe('jquery.enumerable', function() {
     });
   });
 
+  describe('maxBy', function() {
+    it('[-3, -2, -1].maxBy squaring value should be -3', function() {
+      expect($.maxBy([-3, -2, -1], function() {
+        return this * this;
+      })).toEqual(-3);
+    });
+  });
+
   describe('inject [1, 2, 3]', function() {
     var arr;
 
