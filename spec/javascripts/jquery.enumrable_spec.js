@@ -163,4 +163,24 @@ describe('jquery.enumerable', function() {
       })).toEqual([[4, 5, 6], [1, 2, 3]]);
     });
   });
+
+  describe('reject [1, 2, 3, 4, 5, 6]', function() {
+    var arr;
+
+    beforeEach(function() {
+      arr = [1, 2, 3, 4, 5, 6];
+    });
+
+    it('Array of rejected even number values from array should be [2, 4, 6]', function() {
+      expect($.reject(arr, function() {
+        return this % 2 == 0;
+      })).toEqual([1, 3, 5]);
+    });
+
+    it('Array of rejected values more than 3 from array should be [4, 5, 6]', function() {
+      expect($.reject(arr, function() {
+        return this > 3;
+      })).toEqual([1, 2, 3]);
+    });
+  });
 });

@@ -105,6 +105,14 @@
       return [true_results, false_results];
     };
 
+    var reject = function(enumerable, iterator) {
+      var results = [];
+      $.each(enumerable, function(index, value) {
+        !iterator.call(value, index, value) && results.push(value);
+      });
+      return results;
+    };
+    
     return {
       all: all,
       any: any,
@@ -117,7 +125,8 @@
       maxBy: maxBy,
       min: min,
       minBy: minBy,
-      partition: partition
+      partition: partition,
+      reject: reject
     };
   }();
 
