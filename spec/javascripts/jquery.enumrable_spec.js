@@ -143,4 +143,24 @@ describe('jquery.enumerable', function() {
       })).toEqual(1);
     });
   });
+
+  describe('partition [1, 2, 3, 4, 5, 6]', function() {
+    var arr;
+
+    beforeEach(function() {
+      arr = [1, 2, 3, 4, 5, 6];
+    });
+
+    it('Partition by even number values should be [[2, 4, 6], [1, 3, 5]]', function() {
+      expect($.partition(arr, function() {
+        return this % 2 == 0;
+      })).toEqual([[2, 4, 6], [1, 3, 5]]);
+    });
+
+    it('Partition by more than 3 should be [[4, 5, 6], [1, 2, 3]]', function() {
+      expect($.partition(arr, function() {
+        return this > 3;
+      })).toEqual([[4, 5, 6], [1, 2, 3]]);
+    });
+  });
 });

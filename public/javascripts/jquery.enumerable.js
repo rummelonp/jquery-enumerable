@@ -92,6 +92,19 @@
       return result;
     };
 
+    var partition = function(enumerable, iterator) {
+      var true_results = [];
+      var false_results = [];
+      $.each(enumerable, function(index, value) {
+        if (iterator.call(value, index, value)) {
+          true_results.push(value);
+        } else {
+          false_results.push(value);
+        }
+      });
+      return [true_results, false_results];
+    };
+
     return {
       all: all,
       any: any,
@@ -103,7 +116,8 @@
       max: max,
       maxBy: maxBy,
       min: min,
-      minBy: minBy
+      minBy: minBy,
+      partition: partition
     };
   }();
 
