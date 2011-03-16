@@ -14,6 +14,14 @@
     };
   }();
 
+  var MethodizeEnumerable = {};
+  $.each(Enumerable, function(key, method) {
+    MethodizeEnumerable[key] = function() {
+      return method.apply(this, [this].concat($.makeArray(arguments)));
+    };
+  });
+
   $.extend(Enumerable);
+  $.fn.extend(MethodizeEnumerable);
 
 })(jQuery);
