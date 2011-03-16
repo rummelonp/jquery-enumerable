@@ -83,6 +83,16 @@ describe('jquery.enumerable', function() {
     expect($.include).toEqual($.member);
   });
 
+  describe('max', function() {
+    it('[1, 2, 3].max should be 3', function() {
+      expect($.max([1, 2, 3])).toEqual(3);
+    });
+
+    it('[1, 10, 100, 1000].max should be 1000', function() {
+      expect($.max([1, 10, 100, 1000])).toEqual(1000);
+    });
+  });
+
   describe('inject [1, 2, 3]', function() {
     var arr;
 

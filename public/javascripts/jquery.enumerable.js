@@ -31,6 +31,18 @@
 
     var include = member;
 
+    var max = function(enumerable) {
+      var result;
+      $.each(enumerable, function(index, value) {
+        if (result === undefined ||
+           value > result)
+        {
+          result = value;
+        }
+      });
+      return result;
+    };
+
     var inject = function(enumerable, result, iterator) {
       $.each(enumerable, function(index, value) {
         result = iterator.call(value, result, index, value);
@@ -45,6 +57,7 @@
       select: select,
       member: member,
       include: include,
+      max: max,
       inject: inject
     };
   }();
