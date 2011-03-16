@@ -39,8 +39,24 @@ describe('jquery.enumerable', function() {
     });
   });
 
-  it('collect should be equal $.map', function() {
-    expect($.collect).toEqual($.map);
+  describe('collect [1, 2, 3]', function() {
+    var arr;
+
+    beforeEach(function() {
+      arr = [1, 2, 3];
+    });
+
+    it('Array of squaring each values of array should be [1, 4, 9]', function() {
+      expect($.collect(arr, function() {
+        return this * this;
+      })).toEqual([1, 4, 9]);
+    });
+
+    it('Array of keys and values of array should be [[0, 1], [1, 2], [2, 3]]', function() {
+      expect($.collect(arr, function(index) {
+        return [index, this];
+      })).toEqual([[0, 1], [1, 2], [2, 3]]);
+    });
   });
 
   describe('select [1, 2, 3, 4, 5, 6]', function() {

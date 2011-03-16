@@ -13,7 +13,13 @@
       });
     };
 
-    var collect = $.map;
+    var collect = function(enumerable, iterator) {
+      var results = [];
+      $.each(enumerable, function(index, value) {
+        results.push(iterator.call(value, index, value));
+      });
+      return results;
+    };
 
     var select = function(enumerable, iterator) {
       var results = [];
