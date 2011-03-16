@@ -13,6 +13,8 @@
       });
     };
 
+    var collect = $.map;
+
     var inject = function(enumerable, result, iterator) {
       $.each(enumerable, function(index, value) {
         result = iterator.call(value, result, index, value);
@@ -23,6 +25,7 @@
     return {
       all: all,
       any: any,
+      collect: collect,
       inject: inject
     };
   }();

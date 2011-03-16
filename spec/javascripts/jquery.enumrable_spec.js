@@ -39,6 +39,10 @@ describe('jquery.enumerable', function() {
     });
   });
 
+  it('collect should be equal $.map', function() {
+    expect($.collect).toEqual($.map);
+  })
+
   describe('inject [1, 2, 3]', function() {
     var arr;
 
