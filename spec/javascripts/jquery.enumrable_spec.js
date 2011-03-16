@@ -7,10 +7,12 @@ describe('jquery.enumerable', function() {
     });
 
     it('Array of squaring each values of array should be [1, 4, 9]', function() {
-      expect($.inject(arr, [], function(result) {
+      var square = function(result) {
         result.push(this * this);
         return result;
-      })).toEqual([1, 4, 9]);
+      };
+      expect($.inject(arr, [], square)).toEqual([1, 4, 9]);
+      expect($(arr).inject([], square)).toEqual([1, 4, 9]);
     });
   });
 });
