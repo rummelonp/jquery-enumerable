@@ -183,4 +183,20 @@ describe('jquery.enumerable', function() {
       })).toEqual([1, 2, 3]);
     });
   });
+
+  describe('pluck [{title: "title1", content: "content1"}, {title: "title2", content: "content2"}]', function() {
+    var arr;
+
+    beforeEach(function() {
+      arr = [{title: "title1", content: "content1"}, {title: "title2", content: "content2"}];
+    });
+
+    it('title should be ["title1", "title2"]', function() {
+      expect($.pluck(arr, 'title')).toEqual(["title1", "title2"]);
+    });
+
+    it('content should be ["content1", "content2"]', function() {
+      expect($.pluck(arr, 'content')).toEqual(["content1", "content2"]);
+    });
+  });
 });

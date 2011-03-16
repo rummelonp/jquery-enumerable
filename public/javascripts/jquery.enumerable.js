@@ -112,6 +112,14 @@
       });
       return results;
     };
+
+    var pluck = function(enumerable, property) {
+      var results = [];
+      $.each(enumerable, function(index, value) {
+        results.push(value[property]);
+      });
+      return results;
+    };
     
     return {
       all: all,
@@ -126,7 +134,8 @@
       min: min,
       minBy: minBy,
       partition: partition,
-      reject: reject
+      reject: reject,
+      pluck: pluck
     };
   }();
 
