@@ -113,6 +113,18 @@
       return results;
     };
 
+    var sortBy = function(enumerable, iterator) {
+      return $(enumerable).map(function(index, value) {
+        return {
+          value: value,
+          criteria: iterator.call(value, index, value)
+        };
+      }).sort(function(left, right) {
+        var a = left.criteria, b = right.criteria;
+        return a < b ? -1 : a > b ? 1 : 0;
+      }).pluck('value');
+    };
+
     var pluck = function(enumerable, property) {
       var results = [];
       $.each(enumerable, function(index, value) {
@@ -120,7 +132,7 @@
       });
       return results;
     };
-    
+
     return {
       all: all,
       any: any,
@@ -135,6 +147,7 @@
       minBy: minBy,
       partition: partition,
       reject: reject,
+      sortBy: sortBy,
       pluck: pluck
     };
   }();

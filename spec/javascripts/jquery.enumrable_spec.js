@@ -199,4 +199,24 @@ describe('jquery.enumerable', function() {
       expect($.pluck(arr, 'content')).toEqual(["content1", "content2"]);
     });
   });
+
+  describe('sortBy ["200", "30", "1000"]', function() {
+    var arr;
+
+    beforeEach(function() {
+      arr = ["200", "30", "1000"];
+    });
+
+    it('number string should be ["1000", "200", "30"]', function() {
+      expect($.sortBy(arr, function() {
+        return this;
+      })).toEqual(["1000", "200", "30"]);
+    });
+
+    it('parsed integer number should be ["30", "200", "1000"]', function() {
+      expect($.sortBy(arr, function() {
+        return parseInt(this);
+      })).toEqual(["30", "200", "1000"]);
+    });
+  });
 });
