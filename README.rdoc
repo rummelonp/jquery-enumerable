@@ -77,4 +77,4 @@ The following functions are currently implemented
 
 Copyright (C) 2011 Kazuya Takeshima
 
-Released under the GNU Lesser General Public License: http://www.gnu.org/licenses/lgpl.html
+Released under the WTFPL: http://sam.zoy.org/wtfpl
