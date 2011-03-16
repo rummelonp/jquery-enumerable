@@ -235,4 +235,24 @@ describe('jquery.enumerable', function() {
       })).toEqual(["30", "200", "1000"]);
     });
   });
+
+  describe('zip [1, 2, 3]', function() {
+    var arr;
+
+    beforeEach(function() {
+      arr = [1, 2, 3];
+    });
+
+    it('[4, 5, 6], [7, 8, 9] should be [[1, 2, 3], [4, 5, 6], [7, 8, 9]]', function() {
+      expect($.zip(arr, [4, 5, 6], [7, 8, 9])).toEqual([[1, 4, 7], [2, 5, 8], [3, 6, 9]]);
+    });
+
+    it('[1, 2, 3], [1, 2, 3] and each values multiplication should be [1, 8, 27]', function() {
+      expect($.zip(arr, arr, arr, function(arr_value) {
+        return $(arr_value).inject(1, function(result) {
+          return result * this;
+        });
+      })).toEqual([1, 8, 27]);
+    });
+  });
 });

@@ -1,6 +1,10 @@
 (function($) {
 
   var Enumerable = function() {
+    var nothing = function(value) {
+      return value;
+    };
+
     var all = function(enumerable, iterator) {
       return $.inject(enumerable, true, function(result, index, value) {
         return result && iterator.call(value, index, value);
@@ -131,6 +135,15 @@
       }).pluck('value');
     };
 
+    var zip = function() {
+      var args = $.makeArray(arguments);
+      var iterator = args[args.length -1] instanceof Function? args.pop(): nothing;
+      args = $(args);
+      return args.collect(function(index) {
+        return iterator(args.pluck(index));
+      });
+    };
+
     var pluck = function(enumerable, property) {
       var results = [];
       $.each(enumerable, function(index, value) {
@@ -154,6 +167,7 @@
       partition: partition,
       reject: reject,
       sortBy: sortBy,
+      zip: zip,
       pluck: pluck
     };
   }();
